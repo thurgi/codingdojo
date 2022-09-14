@@ -13,9 +13,10 @@ describe('PixelController', () => {
   });
 
   describe('getPixel', () => {
-    it('should return "coucou"', async () => {
+    it('should return "coucou"', (done) => {
       const pixelController = app.get<PixelController>(PixelController);
       expect(pixelController.getHello()).toBe('coucou');
+      done();
     });
   });
 });

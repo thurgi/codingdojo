@@ -7,4 +7,8 @@
 - Traitement des informations supplémentaires
   - id user
   - associer pixel modifié à id user
-  - communication avec x rusts différents
+  - communication avec x rusts 
+
+- Créer un nouveau controler pour les users.
+  - Faire du TDD <3
+- Solution BDD: PostGres

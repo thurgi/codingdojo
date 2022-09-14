@@ -27,28 +27,23 @@ export class UDPService {
     this.socket.bind(41234);
   }
 
-  send(truc: string): Promise<number> {
-    let resolve = null;
-    let reject = null;
-    const promise = new Promise((res, rej) => {
-      resolve = res;
-      reject = rej;
+  send(truc: string): Promise<number | null | Error> {
+    return new Promise((res, rej) => {
+      this.socket.send(
+        truc,
+        this.port,
+        this.address,
+        (error: Error | null, bytes: number) => {
+          if (error) {
+            rej(error);
+            return;
+          } else {
+            res(bytes);
+            console.log("j'ai envoyé le message");
+          }
+        },
+      );
     });
-    this.socket.send(
-      truc,
-      this.port,
-      this.address,
-      (error: Error | null, bytes: number) => {
-        if (error) {
-          reject(error);
-          return;
-        } else {
-          resolve(bytes);
-          console.log("j'ai envoyé le message");
-        }
-      },
-    );
-    return promise;
   }
 
   listen(eventName: string): Observable<any> {
