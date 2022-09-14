@@ -3,18 +3,18 @@
 // import { MessageMappingProperties } from '@nestjs/websockets';
 // import { Observable, fromEvent, EMPTY } from 'rxjs';
 // import { mergeMap, filter } from 'rxjs/operators';
-// 
+
 // export class UdpAdapter implements WebSocketAdapter {
 //   constructor(private app: INestApplicationContext) {}
-// 
+
 //   create(port: number, options: any = {}): any {
 //     return new WebSocket.Server({ port, ...options });
 //   }
-// 
+
 //   bindClientConnect(server, callback: Function) {
 //     server.on('connection', callback);
 //   }
-// 
+
 //   bindMessageHandlers(
 //     client: WebSocket,
 //     handlers: MessageMappingProperties[],
@@ -27,7 +27,7 @@
 //       )
 //       .subscribe(response => client.send(JSON.stringify(response)));
 //   }
-// 
+
 //   bindMessageHandler(
 //     buffer,
 //     handlers: MessageMappingProperties[],
@@ -42,7 +42,7 @@
 //     }
 //     return process(messageHandler.callback(message.data));
 //   }
-// 
+
 //   close(server) {
 //     server.close();
 //   }
