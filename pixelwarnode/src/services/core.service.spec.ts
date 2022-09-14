@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import {CoreService} from "./core.service"
-
+import { CoreService } from './core.service';
 
 describe('coreService', () => {
   let app: TestingModule;
@@ -13,8 +12,8 @@ describe('coreService', () => {
 
   describe('getHello', () => {
     it('should return "Hello World!"', () => {
-      const appController = app.get<AppController>(AppController);
-      expect(appController.getHello()).toBe('Hello World!');
+      const coreService = app.get<CoreService>(CoreService);
+      expect(coreService.receiveMap(null)).toBeInstanceOf(Array);
     });
   });
 });

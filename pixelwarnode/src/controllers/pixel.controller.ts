@@ -1,7 +1,6 @@
 import { Controller, Get, Post } from '@nestjs/common';
-import { UDPService } from 'src/services/UDPService/udp.service';
-import {Pixel} from '../models/pixel.model'
-
+import { Pixel } from '../models/pixel.model';
+import { UDPService } from '../services/UDPService/udp.service';
 
 @Controller('pixels')
 export class PixelController {
@@ -22,6 +21,4 @@ export class PixelController {
   postPixel(pixel: Pixel): Pixel {
     return pixel;
   }
-
-  
 }

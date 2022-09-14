@@ -4,10 +4,8 @@ export interface Pixel {
   c: number;
 }
 
-
 export class PixelImpl implements Pixel {
-  x: number = 0;
-  y: number = 0;
-  c: number = 0;
+  x = 0;
+  y = 0;
+  c = 0;
 }
-
