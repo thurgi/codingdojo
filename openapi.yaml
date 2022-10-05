@@ -1,0 +1,41 @@
+openapi: '3.0.1'
+info:
+  title: followminds
+  description: followminds est un logiciel de gestion de ressources humaine
+  contact:
+    email: a.lehuger@groupe-creative.fr
+  version: '2.0.0'
+externalDocs:
+  description: documentation confluence
+  url: 'https://confluence.groupe-creative.fr/confluence/display/INNOV/Follow%27minds'
+servers:
+  - url: http://localhost:41234
+
+security:
+  - bearerAuth: []
+paths:
+  ################### IMAGE #############################
+  /pixels:
+    post:
+      tags:
+        - images
+      summary: Ajout d'une image
+      operationId: postImage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: binary
+                name:
+                  type: string
+              required:
+                - image
+      responses:
+        201:
+          description: Created
+        400:
+          description: Image already exist

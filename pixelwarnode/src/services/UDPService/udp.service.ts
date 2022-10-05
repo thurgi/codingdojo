@@ -1,30 +1,14 @@
 import * as dgram from 'node:dgram';
-import { Injectable } from '@nestjs/common';
+import { Injectable, OnApplicationBootstrap } from '@nestjs/common';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable()
-export class UDPService {
+export class UDPService implements OnApplicationBootstrap{
   private socket: dgram.Socket;
   private port = 3000;
   private address = 'localhost';
   constructor() {
     this.socket = dgram.createSocket('udp4');
-
-    this.socket.on('error', (err) => {
-      console.log(`server error:\n${err.stack}`);
-      this.socket.close();
-    });
-
-    this.socket.on('message', (msg, rinfo) => {
-      console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
-    });
-
-    this.socket.on('listening', () => {
-      const address = this.socket.address();
-      console.log(`server listening ${address.address}:${address.port}`);
-    });
-
-    this.socket.bind(41234);
   }
 
   send(truc: string): Promise<number | null | Error> {
@@ -52,5 +36,23 @@ export class UDPService {
         subscriber.next(data);
       });
     });
+  }
+
+  onApplicationBootstrap(): void {
+    this.socket.on('error', (err) => {
+      console.log(`server error:\n${err.stack}`);
+      this.socket.close();
+    });
+
+    this.socket.on('message', (msg, rinfo) => {
+      console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
+    });
+
+    this.socket.on('listening', () => {
+      const address = this.socket.address();
+      console.log(`server listening ${address.address}:${address.port}`);
+    });
+
+    this.socket.bind(41234);
   }
 }

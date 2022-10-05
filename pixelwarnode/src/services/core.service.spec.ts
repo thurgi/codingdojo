@@ -11,8 +11,8 @@ describe('coreService', () => {
   });
 
   describe('getHello', () => {
-    it('should return "Hello World!"', () => {
-      const coreService = app.get<CoreService>(CoreService);
+    it('should return "Hello World!"', async () => {
+      const coreService = await app.get<CoreService>(CoreService);
       expect(coreService.receiveMap(null)).toBeInstanceOf(Array);
     });
   });

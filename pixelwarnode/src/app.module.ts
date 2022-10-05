@@ -1,11 +1,8 @@
 import { Module } from '@nestjs/common';
-import { PixelController } from './controllers/pixel.controller';
-import { UDPService } from './services/UDPService/udp.service';
 import { UsersModule } from './modules/users/users.module';
+import { PixelsModule } from './modules/pixels/pixels.module';
 
 @Module({
-  imports: [UsersModule],
-  controllers: [PixelController],
-  providers: [UDPService],
+  imports: [UsersModule, PixelsModule]
 })
 export class AppModule {}
